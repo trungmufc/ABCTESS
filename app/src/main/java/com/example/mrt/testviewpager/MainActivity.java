@@ -7,11 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
-    ViewPager viewPager;
+  static   ViewPager viewPager;
     TabLayout tabLayout;
+    static  int idPlace = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
@@ -22,9 +24,18 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(0);
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
 
-
     }
+
+
+    public static void setIndexPager()
+
+    {
+        idPlace = 65;
+        viewPager.setCurrentItem(2);
+        Fragment_DiaDiem.loadData();
+    }
+
 }

@@ -128,9 +128,7 @@ public class Fragment_KhamPha extends Fragment {
                         }
                         listmerchant.add(merchant);
                     }
-                         /*if(merchantAdapter != null){
-                                merchantAdapter.notifyDataSetChanged();
-                            }*/
+
                     if (jsonArray.length() > 0) {
                         idPage++;
                     }

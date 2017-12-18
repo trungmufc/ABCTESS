@@ -35,6 +35,9 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        final LocationModel model = listLocation.get(position);
+        holder.txtDistrict.setText(model.getName());
+        holder.txtDistrict.setTag(position);
 
     }
 

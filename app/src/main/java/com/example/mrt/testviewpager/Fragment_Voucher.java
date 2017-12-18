@@ -45,8 +45,13 @@ public class Fragment_Voucher extends Fragment {
         activity = getActivity();
         rl_voucher = v.findViewById(R.id.rl_voucer);
         loadCityAdapter();
-        loadDataCity(id_City);
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadDataCity(id_City);
     }
 
     public void loadCityAdapter() {
@@ -55,8 +60,9 @@ public class Fragment_Voucher extends Fragment {
         rl_voucher.setAdapter(cityAdapter);
         rl_voucher.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
     }
-    public void loadDataCity(int provineId){
-            id_City = provineId;
+
+    public void loadDataCity(int provineId) {
+        id_City = provineId;
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         String url = "http://45.118.151.83:8000/region?parent_id=" + id_City;
         JsonObjectRequest JsonResTown = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -65,7 +71,7 @@ public class Fragment_Voucher extends Fragment {
                 listLocationl.clear();
                 try {
                     JSONArray jsonArrTown = response.getJSONArray("records");
-                    listLocationl.add(new LocationModel(-1, "Toàn quốc", 1));
+                    listLocationl.add(new LocationModel(-1, "Toàn quốc", -1));
                     for (int i = 0; i < jsonArrTown.length(); i++) {
                         JSONObject JsonTown = jsonArrTown.getJSONObject(i);
                         listLocationl.add(new LocationModel(
@@ -74,8 +80,6 @@ public class Fragment_Voucher extends Fragment {
                                 JsonTown.getInt("parent_id")
                         ));
                     }
-                    cityAdapter = new CityAdapter(activity, listLocationl);
-                    rl_voucher.setAdapter(cityAdapter);
                     cityAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -90,4 +94,9 @@ public class Fragment_Voucher extends Fragment {
         });
         requestQueue.add(JsonResTown);
     }
+
+/*    public void loadCity(int idCity) {
+        id_City = idCity;
+        loadDataCity(idCity);
+    }*/
 }
