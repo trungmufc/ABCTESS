@@ -52,7 +52,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Toast.makeText(activity, location.getId() + "", Toast.LENGTH_SHORT).show();
-                mainActivity.setIndexPager();
+                mainActivity.setIndexPager(location.getId());
 
             }
         });

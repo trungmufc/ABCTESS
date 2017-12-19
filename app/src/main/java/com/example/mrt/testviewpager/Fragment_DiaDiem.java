@@ -42,7 +42,8 @@ public class Fragment_DiaDiem extends Fragment {
     }
 
     public  static void loadData() {
-      loadDataCity(id_City, id_District);
+      loadDataCity(MainActivity.idPlace);
+
 
     }
 
@@ -54,12 +55,12 @@ public class Fragment_DiaDiem extends Fragment {
         return v;
     }
 
-    @Override
+  /*  @Override
     public void onResume() {
         super.onResume();
-        loadDataCity(id_City, id_District);
+        loadDataCity(id_City);
 
-    }
+    }*/
 
     public void loadDistrictAdapter() {
         listLocationl = new ArrayList<>();
@@ -67,9 +68,9 @@ public class Fragment_DiaDiem extends Fragment {
         rl_district.setAdapter(districtAdapter);
         rl_district.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
     }
-    public static void loadDataCity( int provinceId, int idDistrict) {
-        id_City = MainActivity.idPlace;
-        id_District = idDistrict;
+    public static void loadDataCity(int Id_District ) {
+         MainActivity.idPlace = Id_District;
+
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         String Url = "http://45.118.151.83:8000/region?parent_id=" + MainActivity.idPlace ;
 
@@ -101,5 +102,6 @@ public class Fragment_DiaDiem extends Fragment {
         });
         requestQueue.add(JsonResTown);
     }
+
 
 }

@@ -99,7 +99,7 @@ public class Fragment_KhamPha extends Fragment {
     }
 
     public void loadDataMerchant() {
-        //SORT = merchant;
+
         RequestQueue queue = Volley.newRequestQueue(activity);
         String url = "http://45.118.151.83:8000/merchant?"
                 + "page=" + idPage

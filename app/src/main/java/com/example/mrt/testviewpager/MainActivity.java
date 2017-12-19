@@ -6,11 +6,28 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.mrt.testviewpager.Adapter.CityAdapter;
+import com.example.mrt.testviewpager.Model.LocationModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
   static   ViewPager viewPager;
     TabLayout tabLayout;
     static  int idPlace = -1;
-
+    ArrayList<LocationModel> listlocation;
+    CityAdapter cityAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -24,16 +41,17 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        viewPager.setOffscreenPageLimit(0);
-        tabLayout.setTabsFromPagerAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(2);
+        //tabLayout.setTabsFromPagerAdapter(pagerAdapter);
 
     }
 
 
-    public static void setIndexPager()
+    public static void setIndexPager(int idDistrict)
 
     {
-        idPlace = 65;
+
+        idPlace = idDistrict;
         viewPager.setCurrentItem(2);
         Fragment_DiaDiem.loadData();
     }
