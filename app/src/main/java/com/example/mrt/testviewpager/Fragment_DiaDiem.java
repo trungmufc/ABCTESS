@@ -55,12 +55,7 @@ public class Fragment_DiaDiem extends Fragment {
         return v;
     }
 
-  /*  @Override
-    public void onResume() {
-        super.onResume();
-        loadDataCity(id_City);
 
-    }*/
 
     public void loadDistrictAdapter() {
         listLocationl = new ArrayList<>();

@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     public static void setIndexPager(int idDistrict)
 
     {
-
         idPlace = idDistrict;
         viewPager.setCurrentItem(2);
         Fragment_DiaDiem.loadData();
